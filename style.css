@@ -17,10 +17,16 @@ body{
   
    
 }
-#test_status{
+#status{
     
     width: 80%; 
     margin: 2% auto ;
+}
+#status  h2{
+    display: inline;
+}
+#timer{
+    margin-left: 70%;
 }
 #test{
     width: 80%;

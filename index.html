@@ -7,12 +7,15 @@
     <script src="app.js">       
     </script>
 </head>
-<body>
+<body onload="timer();">
     <div id="mainContainer">
         <div id="header">
             <h1>QUIZ GAME</h1>
         </div>
-        <h2 id="test_status"></h2>
+        <div id="status">
+            <h2 id="test_status"></h2>
+            <h2 id="timer">5:00</h2>
+        </div>
         <div id="test"></div>
     </div>
     <div id="footer">

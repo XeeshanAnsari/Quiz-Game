@@ -13,10 +13,11 @@ var questions = [
  
  
  function renderQuestion() {
+    
      test = get("test");
      if(pos >= questions.length){
          
-         test.innerHTML = "<h2 id='complete'>You got "+ correct +" of " + questions.length + " questions correct</h2>"; 
+          test.innerHTML = "<h2 id='complete'>You got "+ correct +" of " + questions.length + " questions correct</h2>"; 
           get("test_status").innerHTML  = "";
           pos = 0;
           correct = 0;
@@ -49,5 +50,29 @@ var questions = [
        pos++;
        renderQuestion();
  }
+ var sec = 60;
+ var minute = 0;
+ setInterval(function timer() {
+     var timer = document.getElementById('timer');
+     sec--;
+     if(minute < 0){
+         test.innerHTML = "<h2 id='complete'>You got "+ correct +" of " + questions.length + " questions correct</h2>"; 
+          get("test_status").innerHTML  = "";
+          sec = 00;
+          timer.innerHTML = "Time Over";
+          pos = 0;
+          correct = 0;
+          return false;
+     }else{
+         if(sec === 0){
+         minute--;
+         sec = 60;
+      }
+     }
+     
+     
+     timer.innerHTML = minute +":" + sec;
+     
+ },300);
  window.addEventListener('load', renderQuestion, false);
  
