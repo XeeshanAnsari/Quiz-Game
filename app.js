@@ -15,8 +15,9 @@ var questions = [
  function renderQuestion() {
      test = get("test");
      if(pos >= questions.length){
-         test.innerHTML = "<h2>You got "+ correct +" of " + questions.length + " questions correct"; 
-          get("test_status").innerHTML  = "Test Complete";
+         
+         test.innerHTML = "<h2 id='complete'>You got "+ correct +" of " + questions.length + " questions correct</h2>"; 
+          get("test_status").innerHTML  = "";
           pos = 0;
           correct = 0;
           return false;
@@ -27,11 +28,11 @@ var questions = [
      opt2 = questions[pos][2];
      opt3 = questions[pos][3];
      
-     test.innerHTML = "<h3>"+ question +"</h3>";
-     test.innerHTML +="<input type='radio' name='choices' value='A' >" + opt1 + "<br>"; 
-     test.innerHTML +="<input type='radio' name='choices' value='B' >" + opt2 + "<br>"; 
-     test.innerHTML +="<input type='radio' name='choices' value='C' >" + opt3 + "<br>";
-     test.innerHTML +="<button onclick='checkAnswer();' > Next </button>";
+     test.innerHTML = "<h3 id='question'>" + question +"</h3>";
+     test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='A' >" + opt1 + "<br>"; 
+     test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='B' >" + opt2 + "<br>"; 
+     test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='C' >" + opt3 + "<br>";
+     test.innerHTML +="<button onclick='checkAnswer();' id='nextBtn'> Next </button>";
      
  }
  function checkAnswer() {
