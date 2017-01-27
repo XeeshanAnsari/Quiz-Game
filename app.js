@@ -1,14 +1,26 @@
-var pos = 0, test ,test_status ,question ,choice ,choices, correct = 0 , opt1 , opt2, opt3 ;
-
+var pos = 0, test ,test_status ,question ,choice ,choices, correct = 0 , opt1 , opt2, opt3 ,opt4;
+var result_perc = 0; 
+var sec = 60;
+var minute = 0;
 var questions = [
-       ["what is 20 + 5?", "15" , "25" ,"24" , "B"],
-       ["what is 20 - 5?", "15" , "45" ,"2" , "A"],
-       ["what is 30 - 5?", "326" , "25" ,"2421" , "B"],
-       ["what is 19 + 5?", "15" , "25" ,"24" , "C"]
+       ["For intial step we use this command to create package.json file ? ", "node install" , "babel install" ,"npm install" ,, "bebel  ",  "C"],
+       ["Why we use babel our project ?", "For convert jsx file to js file" , "For convert ReactDOM" ,"For convert React.Component to js " , "" , "A"],
+       ["what is 30 - 5?", "326" , "25" ,"2421" ,"", "B"],
+       ["what is 19 + 5?", "15" , "25" ,"24" , "", "C"]
     ];
     
  function get(x){
      return document.getElementById(x);  
+ }
+ 
+ function result() {
+          test.innerHTML = "<div id='complete'><span class='resultBox'><h2>CORRECT ANSWER</h2><h2>"+ correct +"</h2></span> <span class='resultBox'><h2>Percentage </h2><h2> "+ result_perc +" %</h2></span></div>"; 
+          get("test_status").innerHTML  = "";
+          pos = 0;
+          correct = 0;
+          minute = -1;
+          get("timer").innerHTML  = "";
+          
  }
  
  
@@ -16,11 +28,7 @@ var questions = [
     
      test = get("test");
      if(pos >= questions.length){
-         
-          test.innerHTML = "<h2 id='complete'>You got "+ correct +" of " + questions.length + " questions correct</h2>"; 
-          get("test_status").innerHTML  = "";
-          pos = 0;
-          correct = 0;
+          result();
           return false;
     }
      get("test_status").innerHTML  = "Question " + (pos+1) + " of "  + (questions.length);
@@ -33,35 +41,34 @@ var questions = [
      test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='A' >" + opt1 + "<br>"; 
      test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='B' >" + opt2 + "<br>"; 
      test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='C' >" + opt3 + "<br>";
+     test.innerHTML +="<input type='radio' class='optionBtn' name='choices' value='D' >" + opt4 + "<br>";
      test.innerHTML +="<button onclick='checkAnswer();' id='nextBtn'> Next </button>";
      
  }
  function checkAnswer() {
       choices = document.getElementsByName("choices");
       console.log(choices);
-     for (var i = 0; i < choices.length; i++) {
+      for (var i = 0; i < choices.length; i++) {
           if(choices[i].checked){
               choice = choices[i].value;
           }
        }
-       if(choice == questions[pos][4]){
+       
+       if(choice == questions[pos][5]){
            correct++;
+           result_perc = 5 + result_perc;
        }
        pos++;
        renderQuestion();
  }
- var sec = 60;
- var minute = 0;
+ window.addEventListener('load', renderQuestion, false);
+ 
+
  setInterval(function timer() {
      var timer = document.getElementById('timer');
      sec--;
      if(minute < 0){
-         test.innerHTML = "<h2 id='complete'>You got "+ correct +" of " + questions.length + " questions correct</h2>"; 
-          get("test_status").innerHTML  = "";
-          sec = 00;
-          timer.innerHTML = "Time Over";
-          pos = 0;
-          correct = 0;
+          result();
           return false;
      }else{
          if(sec === 0){
@@ -69,10 +76,8 @@ var questions = [
          sec = 60;
       }
      }
+      timer.innerHTML = minute +":" + sec;
      
-     
-     timer.innerHTML = minute +":" + sec;
-     
- },300);
- window.addEventListener('load', renderQuestion, false);
+ },500);
+
  

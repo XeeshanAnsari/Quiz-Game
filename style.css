@@ -8,7 +8,7 @@ body{
     box-shadow: 5px 5px  5px #333333;
     text-align: center;
     width: 96%;
-    padding: 2%;
+    padding: 1%;
    color: white;
     
 }
@@ -32,7 +32,7 @@ body{
     width: 80%;
     margin: 2% auto   ;
     padding: 2%;
-    min-height: 350px;
+    min-height: 370px;
     background: #eeeeee;
     position: relative;
 }
@@ -55,10 +55,23 @@ body{
     border-radius: 2px 2px;
     
 }
+
+#complete{
+    text-align: center;
+    padding: 5%;
+    margin: 5% auto;
+}
+.resultBox{
+    width: 50%;
+    background: blue;
+ 
+}
+
+
 #footer{
-    background: blueviolet;
+    
     text-align: center;
     width: 98%;
-    padding: 1%;
-   color: white;
+    color: #333333;
+     
 }
