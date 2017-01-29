@@ -17,6 +17,17 @@ body{
   
    
 }
+.wellcome{
+    margin-top: 50px;
+    text-align: center;
+}
+.wellcome button{
+    padding: 1% 2%;
+    background: #aaaaaa;
+    border: 1px solid #999999;
+    border-radius: 2px 2px;
+}
+
 #status{
     
     width: 80%; 
